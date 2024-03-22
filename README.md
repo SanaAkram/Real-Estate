@@ -76,14 +76,49 @@ Before starting the installation process, ensure you have the following prerequi
 
 ## Step 4: Install NVIDIA Drivers and CUDA Toolkit
 
-1. Check server specifications to determine compatible NVIDIA drivers and CUDA Toolkit version.
+Here's the updated section in the README with the instructions you provided:
 
-2. Install NVIDIA drivers and CUDA Toolkit according to server specifications.
+```markdown
+## Step 1 — Checking Server Specifications and Installing NVIDIA Drivers and CUDA Toolkit
 
-3. Verify CUDA installation:
-   ```
-   nvcc --version
-   ```
+### Checking Server Specifications
+
+Use the `lshw` command to check GPU and determine the NVIDIA driver currently installed on your system:
+
+```bash
+sudo lshw -C display
+```
+
+Identify your GPU model from the output, and note the installed NVIDIA driver version.
+
+For example, if your GPU is NVIDIA Tesla T4, and the currently installed NVIDIA driver is for compatibility with the CUDA 11.x series, proceed with the installation of CUDA 11.x.
+
+### Installing NVIDIA Drivers and CUDA Toolkit
+
+Install NVIDIA drivers and CUDA Toolkit according to server specifications. For example, if your GPU is NVIDIA Tesla T4 and requires CUDA 11.x compatibility:
+
+```bash
+# Install NVIDIA driver (replace 'nvidia-driver-version' with the appropriate version)
+sudo apt install nvidia-driver-version
+
+# Install CUDA Toolkit 11.x
+sudo apt install nvidia-cuda-toolkit
+```
+
+Replace `'nvidia-driver-version'` with the appropriate NVIDIA driver version based on your server specifications.
+
+### Verifying CUDA Installation
+
+After installing the NVIDIA driver and CUDA Toolkit, verify CUDA installation:
+
+```bash
+nvcc --version
+```
+
+You should see output confirming the installed CUDA version.
+```
+
+With these instructions added, users will be guided through checking server specifications, installing the appropriate NVIDIA drivers and CUDA Toolkit, and verifying the installation to ensure compatibility and functionality.
 
 ## Step 5: Configure Database and Environment Variables
 
