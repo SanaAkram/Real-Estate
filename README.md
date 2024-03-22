@@ -15,7 +15,7 @@ Before starting the installation process, ensure you have the following prerequi
 ### Software Requirements
 
 - NVIDIA Driver
-- CUDA 9.0 / 10.0 (from Archive)
+- CUDA 
 - CuDNN
 - MySQL 5.5
 - Update `max_connections` value to 500 in MySQL
@@ -24,6 +24,40 @@ Before starting the installation process, ensure you have the following prerequi
 
 - Libsvm3
 - Python-libsvm
+### Installing MySQL
+
+```bash
+sudo apt-get install mysql-server
+```
+
+During the installation process, you'll be prompted to set a root password for MySQL.
+
+### Configuring MySQL
+
+After installation, adjust MySQL's configuration by updating the `max_connections` value. Open the MySQL configuration file using a text editor:
+
+```bash
+sudo nano /etc/mysql/mysql.conf.d/mysqld.cnf
+```
+
+Find the `max_connections` parameter and set it to `500`:
+
+```
+max_connections = 500
+```
+
+Save the file and exit the text editor.
+
+### Verifying MySQL Installation
+
+Check if MySQL server is running:
+
+```bash
+systemctl status mysql
+```
+
+You should see output indicating that MySQL is active and running.
+
 
 ## Step 1: Setup SSH Key and Clone Repository
 
