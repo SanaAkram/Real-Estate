@@ -50,7 +50,7 @@ Before starting the installation process, ensure you have the following prerequi
    sudo apt update
    sudo apt install python3.9
    ```
-   # Checking Python Version
+   #### Checking Python Version
    
    After installing dependencies and setting up the environment, verify the Python version:
    
