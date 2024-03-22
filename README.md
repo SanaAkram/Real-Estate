@@ -43,7 +43,6 @@ Before starting the installation process, ensure you have the following prerequi
    ```
    git clone git@github.com:username/repository.git
    ```
-
 ## Step 2: Install Python 3.9 and Create Virtual Environment
 
 1. Install Python 3.9:
@@ -51,13 +50,22 @@ Before starting the installation process, ensure you have the following prerequi
    sudo apt update
    sudo apt install python3.9
    ```
+### Checking Python Version
+
+After installing dependencies and setting up the environment, verify the Python version:
+
+```bash
+python --version
+```
+
+Ensure that Python 3.9 is displayed as the installed version.
 
 2. Activate Python 3.9:
    ```
    sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.9 1
    ```
 
-3. Create a virtual environment for Python 3.9:
+3. Create a virtual environment for Python 3.9 into project directory:
    ```
    python3.9 -m venv venv_3.9
    ```
@@ -69,16 +77,12 @@ Before starting the installation process, ensure you have the following prerequi
 
 ## Step 3: Install Dependencies
 
-1. Install project dependencies from requirements.txt:
+1. Install project dependencies from requirements.txt using following command:
    ```
    pip install -r requirements.txt
    ```
 
 ## Step 4: Install NVIDIA Drivers and CUDA Toolkit
-
-Here's the updated section in the README with the instructions you provided:
-
-## Step 1 — Checking Server Specifications and Installing NVIDIA Drivers and CUDA Toolkit
 
 ### Checking Server Specifications
 
@@ -90,14 +94,11 @@ sudo lshw -C display
 
 Identify your GPU model from the output, and note the installed NVIDIA driver version.
 
-For example, if your GPU is NVIDIA Tesla T4, and the currently installed NVIDIA driver is for compatibility with the CUDA 11.x series, proceed with the installation of CUDA 11.x.
-
 ### Installing NVIDIA Drivers and CUDA Toolkit
 
 Install NVIDIA drivers and CUDA Toolkit according to server specifications. For example, if your GPU is NVIDIA Tesla T4 and requires CUDA 11.x compatibility:
 
 ```bash
-# Install NVIDIA driver (replace 'nvidia-driver-version' with the appropriate version)
 sudo apt install nvidia-driver-version
 
 # Install CUDA Toolkit 11.x
@@ -105,6 +106,16 @@ sudo apt install nvidia-cuda-toolkit
 ```
 
 Replace `'nvidia-driver-version'` with the appropriate NVIDIA driver version based on your server specifications.
+
+### Verifying NVIDIA Driver Installation
+
+After installing the NVIDIA driver, verify its installation using `nvidia-smi`:
+
+```bash
+nvidia-smi
+```
+
+You should see information about your NVIDIA GPU, confirming that the driver is installed correctly.
 
 ### Verifying CUDA Installation
 
