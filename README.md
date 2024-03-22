@@ -78,7 +78,6 @@ Before starting the installation process, ensure you have the following prerequi
 
 Here's the updated section in the README with the instructions you provided:
 
-```markdown
 ## Step 1 — Checking Server Specifications and Installing NVIDIA Drivers and CUDA Toolkit
 
 ### Checking Server Specifications
@@ -116,52 +115,7 @@ nvcc --version
 ```
 
 You should see output confirming the installed CUDA version.
-```
+
 
 With these instructions added, users will be guided through checking server specifications, installing the appropriate NVIDIA drivers and CUDA Toolkit, and verifying the installation to ensure compatibility and functionality.
 
-## Step 5: Configure Database and Environment Variables
-
-1. Update database configurations in relevant files.
-
-2. Set environment variables as required.
-
-## Step 6: Run API and Web Servers
-
-1. Activate the appropriate virtual environment:
-   ```
-   source venv_api/bin/activate
-   ```
-
-2. Run the API server:
-   ```
-   python batch_api_quick_resp.py
-   ```
-
-3. Activate the virtual environment for the web server:
-   ```
-   source venv_web/bin/activate
-   ```
-
-4. Run the web server:
-   ```
-   python main.py
-   ```
-
-## Step 7: Create Systemd Unit Files and Nginx Configuration
-
-1. Create systemd unit files for API and web servers.
-
-2. Configure Nginx to proxy requests to the uWSGI servers.
-
-3. Enable and start the systemd services.
-
-4. Test the servers and Nginx configuration.
-
-## Conclusion
-
-You have successfully installed and configured the Real Estate Classification API on your Ubuntu server.
-
----
-
-This guide covers the entire setup process from cloning the repository to configuring servers and proxies. Adjust the paths and configurations as necessary based on your specific project requirements and server setup.
