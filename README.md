@@ -59,24 +59,67 @@ systemctl status mysql
 You should see output indicating that MySQL is active and running.
 
 
-## Step 1: Setup SSH Key and Clone Repository
+# Setting Up and Testing SSH Keys with GitHub
 
-1. Generate an SSH key on your local machine if you haven't already:
-   ```
-   ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
-   ```
+This document outlines the process for generating a new SSH key, adding it to a GitHub account, and testing the SSH connection to GitHub. This setup is crucial for secure, password-less interaction with GitHub repositories over SSH.
 
-2. Add the SSH key to your GitHub account.
+## Prerequisites
 
-3. Install Git on your local machine:
-   ```
-   sudo apt-get install git-core
-   ```
+- Access to a terminal on a Linux-based system (e.g., Ubuntu)
+- A GitHub account
 
-4. Clone the repository using SSH:
-   ```
-   git clone git@github.com:username/repository.git
-   ```
+## Steps
+
+### 1. Generating an SSH Key
+
+First, generate a new SSH key pair using the `ssh-keygen` command. The key is secured with a passphrase for additional security.
+
+```bash
+ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+```
+
+When prompted, enter the filename to save the key if you want to use a specific name or location; otherwise, you can press Enter to use the default location (`~/.ssh/id_rsa`).
+
+### 2. Starting the SSH Agent
+
+Start the SSH agent in the background to manage your keys.
+
+```bash
+eval "$(ssh-agent -s)"
+```
+
+### 3. Adding Your SSH Key to the SSH Agent
+
+Add your SSH private key to the `ssh-agent`. If you've used a custom filename, replace `id_rsa` with your filename.
+
+```bash
+ssh-add ~/.ssh/id_rsa
+```
+
+### 4. Adding Your SSH Key to GitHub
+
+- Copy the content of your public SSH key file. If you've used a custom filename, replace `id_rsa.pub` with your filename.
+
+  ```bash
+  cat ~/.ssh/id_rsa.pub
+  ```
+
+- Log in to your GitHub account, go to **Settings** > **SSH and GPG keys** > **New SSH key**, and paste your key into the field. Provide a descriptive title and click **Add SSH Key**.
+
+### 5. Testing Your SSH Connection
+
+Finally, test your SSH connection to GitHub. You should receive a success message acknowledging your GitHub username.
+
+```bash
+ssh -T git@github.com
+```
+
+If successful, you'll see a message like:
+
+```plaintext
+Hi username! You've successfully authenticated, but GitHub does not provide shell access.
+```
+
 ## Step 2: Install Python 3.9 and Create Virtual Environment
 
 1. Install Python 3.9:
