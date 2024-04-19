@@ -1,4 +1,66 @@
-Got it, let's continue to complete the readme:
+Sure, let's continue completing the readme:
+
+## 3. Setting Up and Testing SSH Keys with GitHub <a name="setting-up-and-testing-ssh-keys-with-github"></a>
+
+This section outlines the process for generating a new SSH key, adding it to a GitHub account, and testing the SSH connection to GitHub for secure, password-less interaction with GitHub repositories over SSH.
+
+### Prerequisites
+
+- Access to a terminal on a Linux-based system (e.g., Ubuntu)
+- A GitHub account
+
+### Steps
+
+1. **Generating an SSH Key**
+
+   Begin by generating a new SSH key pair using the `ssh-keygen` command. The key will be secured with a passphrase for additional security.
+
+   ```bash
+   ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+   ```
+
+   When prompted, enter the filename to save the key, or press Enter to use the default location (`~/.ssh/id_rsa`).
+
+2. **Starting the SSH Agent**
+
+   Start the SSH agent in the background to manage your keys.
+
+   ```bash
+   eval "$(ssh-agent -s)"
+   ```
+
+3. **Adding Your SSH Key to the SSH Agent**
+
+   Add your SSH private key to the `ssh-agent`. Replace `id_rsa` with your filename if you used a custom one.
+
+   ```bash
+   ssh-add ~/.ssh/id_rsa
+   ```
+
+4. **Adding Your SSH Key to GitHub**
+
+   - Copy the content of your public SSH key file. Replace `id_rsa.pub` with your filename if you used a custom one.
+
+     ```bash
+     cat ~/.ssh/id_rsa.pub
+     ```
+
+   - Log in to your GitHub account, navigate to **Settings** > **SSH and GPG keys** > **New SSH key**, and paste your key into the field. Provide a descriptive title and click **Add SSH Key**.
+
+5. **Testing Your SSH Connection**
+
+   Finally, test your SSH connection to GitHub. You should receive a success message acknowledging your GitHub username.
+
+   ```bash
+   ssh -T git@github.com
+   ```
+
+   If successful, you'll see a message like:
+
+   ```plaintext
+   Hi {username}! You've successfully authenticated, but GitHub does not provide shell access.
+   ```
+
 
 ## 4. Installing Python 3.6 on Ubuntu <a name="installing-python-36-on-ubuntu"></a>
 
