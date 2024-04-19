@@ -19,7 +19,11 @@ Before starting the installation process, ensure you have the following prerequi
 - CuDNN
 - MySQL 5.5
 - Update `max_connections` value to 500 in MySQL
-
+```
+* Update max_connections value to 500 in MySQL. Login to your MySQL terminal with the privileged user and execute the following query.
+``` 
+mysql> SET GLOBAL max_connections = 500;
+```
 ### Additional Libraries (Ubuntu)
 
 - Libsvm3
@@ -117,48 +121,151 @@ ssh -T git@github.com
 If successful, you'll see a message like:
 
 ```plaintext
-Hi username! You've successfully authenticated, but GitHub does not provide shell access.
+Hi {username}! You've successfully authenticated, but GitHub does not provide shell access.
 ```
 
-## Step 2: Install Python 3.9 and Create Virtual Environment
+### Step 2: Installing Python 3.6 on Ubuntu
 
-1. Install Python 3.9:
-   ```
-   sudo apt update
-   sudo apt install python3.9
-   ```
-   #### Checking Python Version
-   
-   After installing dependencies and setting up the environment, verify the Python version:
-   
+This guide will walk you through the steps to install Python 3.6 on an Ubuntu system using the `deadsnakes` Personal Package Archive (PPA).
+
+## Prerequisites
+
+- Access to a terminal on an Ubuntu system.
+- Permission to install software on the system.
+
+## Steps
+
+1. **Add the `deadsnakes` PPA**
+
+   Open a terminal and run the following command to add the `deadsnakes` PPA to your system:
+
    ```bash
-   python --version
+   sudo add-apt-repository ppa:deadsnakes/ppa
    ```
 
-Ensure that Python 3.9 is displayed as the installed version.
+2. **Update Package Index**
 
-2. Activate Python 3.9:
-   ```
-   sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.9 1
-   ```
+   Update the package index to ensure your system knows about the packages available in the newly added PPA:
 
-3. Create a virtual environment for Python 3.9 into project directory:
-   ```
-   python3.9 -m venv venv_3.9
+   ```bash
+   sudo apt update
    ```
 
-4. Activate the virtual environment:
-   ```
-   source venv_3.9/bin/activate
+3. **Install Python 3.6**
+
+   Once the package index is updated, install Python 3.6 using the `apt` package manager:
+
+   ```bash
+   sudo apt install python3.6
    ```
 
-## Step 3: Install Dependencies
+4. **Verify Installation**
 
-1. Install project dependencies from requirements.txt using following command:
-   ```
-   pip install -r requirements.txt
+   After installation, verify that Python 3.6 has been installed successfully by running:
+
+   ```bash
+   python3.6 --version
    ```
 
+   This command should output the version of Python 3.6 installed on your system.
+
+## Conclusion
+
+You've successfully installed Python 3.6 on your Ubuntu system using the `deadsnakes` PPA. You can now use Python 3.6 for 
+
+* Additional Libraries to be installed (Ubuntu):
+```
+Libsvm3 (sudo apt install libsvm3)
+Python-libsvm (sudo apt install python-libsvm)
+```
+
+## Step 1 — Installing the Components from the Ubuntu Repositories
+Our first step will be to install all of the pieces that we need from the Ubuntu repositories. We will install pip, the Python package manager, to manage our Python components. We will also get the Python development files necessary to build uWSGI.
+
+First, let's update the local package index and install the packages that will allow us to build our Python environment. These will include python3-pip, along with a few more packages and development tools necessary for a robust programming environment:
+
+```
+sudo apt update
+sudo apt install python3-pip python3-dev build-essential libssl-dev libffi-dev python3-setuptools
+```
+With these packages in place, let’s move on to placing files for our project.
+
+you can check what we are going to achieve [here](https://github.com/Ali-Tahir/real_estate_classification_api/blob/master/docs/mechanism.pdf)
+
+
+## Step 2 — Creating Python Virtual Environments
+Next, we’ll set up virtual environments in order to isolate our Flask application from the other Python files on the system.
+
+Start by installing the python3-venv package, which will install the venv module:
+```
+sudo apt install python3-venv
+```
+
+First, let’s install wheel with the local instance of pip to ensure that our packages will install even if they are missing wheel archives:
+```
+pip install wheel
+```
+Now we will create our virtual environments (assuming you are in **real_estate_classification_api** directory)
+```
+python3.6 -m venv venv_server
+python3.6 -m venv venv_web
+python3.6 -m venv venv_api
+```
+
+Now make sure you are in **real_estate_classification_api** directory and run following commands one by one to setup the environments with required packages
+```
+venv_server/bin/pip install -r server_requirements.txt
+venv_web/bin/pip install -r web_requirements.txt
+venv_api/bin/pip install -r api_requirements.txt
+```
+
+
+Now, to place our machine learning models first we need to install unzip so we could extract our models later from downloaded zip files!
+
+```
+sudo apt-get install unzip
+```
+
+* ##### Old version
+
+	Move to the old version models directory using following command!
+
+	```
+	cd old_version/batch_api_code/kavlibs
+	```
+
+	Now we must include our models!
+
+	```
+	wget https://www.dropbox.com/s/ohs0fwb83o5p4ic/old_models.zip
+	unzip old_models.zip
+	```
+
+* #####  Updated version
+
+	Move to the updated version models directory by using following command!
+
+	```
+	cd updated_version/batch_api_code_modified/kavlibs
+	```
+
+	Now we must include our models!
+
+	```
+	wget https://www.dropbox.com/s/uu32bt4qfjfcfdf/models.zip
+	unzip models.zip
+	cd ..
+	cd ..
+	cd batch_api_code_modified_2/kavlibs
+	wget https://www.dropbox.com/s/uu32bt4qfjfcfdf/models.zip
+	unzip models.zip
+	```
+
+	Move back to the main **real_estate_classification_api** directory by using the following command more than once!
+
+	```
+	cd ../..
+	```
 ## Step 4: Install NVIDIA Drivers and CUDA Toolkit
 
 ### Checking Server Specifications
