@@ -1,4 +1,4 @@
-# Real Estate Classification API Configuration Guide
+i # Real Estate Classification API Configuration Guide
 
 Welcome to the Real Estate Classification API Configuration Guide! This comprehensive guide will assist you in setting up the Real Estate Classification API on your Ubuntu server. Ensure to follow each step diligently for a smooth installation process.
 
@@ -254,29 +254,65 @@ sudo lshw -C display
 ```
 *If not then contact your manager.
 
-# Install NVIDIA drivers
-sudo apt install nvidia-headless-535-server nvidia-utils-535-server -y
-sudo apt install nvidia-driver-535
 
-# Download and install NVIDIA driver
-sudo wget https://us.download.nvidia.com/tesla/440.95.01/NVIDIA-Linux-x86_64-440.95.01.run
-sudo sh NVIDIA-Linux-x86_64-440.95.01.run
+## 8. Install NVIDIA Drivers and CUDA Toolkit <a name="install-nvidia-drivers-and-cuda-toolkit"></a>
 
-# Install CUDA Toolkit 10.0
-sudo wget https://developer.nvidia.com/compute/cuda/10.0/Prod/local_installers/cuda-repo-ubuntu1804-10-0-local-10.0.130-410.48_1.0-1_amd64.deb
-sudo dpkg -i cuda-repo-ubuntu1804-10-0-local-10.0.130-410.48_1.0-1_amd64.deb
-sudo apt-key add /var/cuda-repo-<version>/7fa2af80.pub
-sudo apt-get update
-sudo apt -y install cuda-10-0
+### Installing NVIDIA Drivers and CUDA Toolkit
 
-# Add CUDA binaries to PATH and library path
-export PATH=/usr/local/cuda-10.0/bin${PATH:+:${PATH}}
-export LD_LIBRARY_PATH=/usr/local/cuda-10.0/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+To install NVIDIA drivers and CUDA Toolkit, follow these steps:
 
-# Install cuDNN 7.5.0
-sudo wget https://www.dropbox.com/scl/fi/8fmpwmxun8ebsrtlw5an6/libcudnn7_7.5.0.56-1-cuda10.0_amd64.deb?rlkey=7fnj43qq6544eufcq7jijq4lc&st=yuz87m80&dl=0 -O libcudnn7_7.5.0.56-1+cuda10.0_amd64.deb
-sudo dpkg -i libcudnn7_7.5.0.56-1+cuda10.0_amd64.deb
-sudo apt-get -y install cudnn
+1. **Install NVIDIA drivers**
+
+   Run the following commands to install NVIDIA drivers:
+
+   ```bash
+   sudo apt install nvidia-headless-535-server nvidia-utils-535-server -y
+   sudo apt install nvidia-driver-535
+   ```
+
+2. **Download and install NVIDIA driver**
+
+   Download and install the NVIDIA driver by executing the following commands:
+
+   ```bash
+   sudo wget https://us.download.nvidia.com/tesla/440.95.01/NVIDIA-Linux-x86_64-440.95.01.run
+   sudo sh NVIDIA-Linux-x86_64-440.95.01.run
+   ```
+
+   Make sure to replace the URL with the appropriate NVIDIA driver version for your system.
+
+3. **Install CUDA Toolkit 10.0**
+
+   Download and install CUDA Toolkit 10.0 with the following commands:
+
+   ```bash
+   sudo wget https://developer.nvidia.com/compute/cuda/10.0/Prod/local_installers/cuda-repo-ubuntu1804-10-0-local-10.0.130-410.48_1.0-1_amd64.deb
+   sudo dpkg -i cuda-repo-ubuntu1804-10-0-local-10.0.130-410.48_1.0-1_amd64.deb
+   sudo apt-key add /var/cuda-repo-<version>/7fa2af80.pub
+   sudo apt-get update
+   sudo apt -y install cuda-10-0
+   ```
+
+   Replace `<version>` in the `apt-key add` command with the appropriate CUDA repository version.
+
+4. **Add CUDA binaries to PATH and library path**
+
+   Add CUDA binaries to PATH and library path by running:
+
+   ```bash
+   export PATH=/usr/local/cuda-10.0/bin${PATH:+:${PATH}}
+   export LD_LIBRARY_PATH=/usr/local/cuda-10.0/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+   ```
+
+5. **Install cuDNN 7.5.0**
+
+   Download and install cuDNN 7.5.0 with the following commands:
+
+   ```bash
+   sudo wget https://www.dropbox.com/scl/fi/8fmpwmxun8ebsrtlw5an6/libcudnn7_7.5.0.56-1-cuda10.0_amd64.deb?rlkey=7fnj43qq6544eufcq7jijq4lc&st=yuz87m80&dl=0 -O libcudnn7_7.5.0.56-1+cuda10.0_amd64.deb
+   sudo dpkg -i libcudnn7_7.5.0.56-1+cuda10.0_amd64.deb
+   sudo apt-get -y install cudnn
+   ```
 
 
 Replace `'nvidia-driver-version'` with the appropriate NVIDIA driver version based on your server specifications.
