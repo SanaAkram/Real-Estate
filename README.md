@@ -1,3 +1,71 @@
+# Real Estate Classification API Configuration Guide
+
+Welcome to the Real Estate Classification API Configuration Guide! This comprehensive guide will assist you in setting up the Real Estate Classification API on your Ubuntu server. Ensure to follow each step diligently for a smooth installation process.
+
+## Table of Contents
+
+1. [Prerequisites](#prerequisites)
+   - [Hardware Requirements](#hardware-requirements)
+   - [Software Requirements](#software-requirements)
+2. [Installing MySQL](#installing-mysql)
+   - [Configuring MySQL](#configuring-mysql)
+   - [Verifying MySQL Installation](#verifying-mysql-installation)
+3. [Setting Up and Testing SSH Keys with GitHub](#setting-up-and-testing-ssh-keys-with-github)
+4. [Installing Python 3.6 on Ubuntu](#installing-python-36-on-ubuntu)
+   - [Conclusion](#conclusion)
+5. [Installing Components from Ubuntu Repositories](#installing-components-from-ubuntu-repositories)
+6. [Creating Python Virtual Environments](#creating-python-virtual-environments)
+7. [Downloading Machine Learning Models](#downloading-machine-learning-models)
+8. [Install NVIDIA Drivers and CUDA Toolkit](#install-nvidia-drivers-and-cuda-toolkit)
+
+## 1. Prerequisites <a name="prerequisites"></a>
+
+Before initiating the installation process, ensure your system meets the following prerequisites:
+
+### Hardware Requirements <a name="hardware-requirements"></a>
+
+- RAM: 14-16GB
+- Hard Disk: 40-60GB
+- GPU Memory: 4-15GB
+
+### Software Requirements <a name="software-requirements"></a>
+
+- NVIDIA Driver
+- CUDA 
+- CuDNN
+- MySQL 5.5
+- Update `max_connections` value to 500 in MySQL
+
+## 2. Installing MySQL <a name="installing-mysql"></a>
+
+To install MySQL, execute the following command:
+
+```bash
+sudo apt-get install mysql-server
+```
+
+Follow the on-screen prompts to set a root password for MySQL.
+
+### Configuring MySQL <a name="configuring-mysql"></a>
+
+After installation, adjust MySQL's configuration by updating the `max_connections` value. Open the MySQL configuration file:
+
+```bash
+sudo nano /etc/mysql/mysql.conf.d/mysqld.cnf
+```
+
+Find `max_connections` and set it to `500`.
+
+### Verifying MySQL Installation <a name="verifying-mysql-installation"></a>
+
+Check if MySQL server is running:
+
+```bash
+systemctl status mysql
+```
+
+Continue formatting and adding content for the remaining sections as needed. This structure provides a clear and organized guide for users to follow.
+
 Sure, let's continue completing the readme:
 
 ## 3. Setting Up and Testing SSH Keys with GitHub <a name="setting-up-and-testing-ssh-keys-with-github"></a>
