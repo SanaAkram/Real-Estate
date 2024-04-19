@@ -243,8 +243,42 @@ unzip models.zip
 cd ../../../..
 ```
 
+```markdown
 ## 8. Install NVIDIA Drivers and CUDA Toolkit <a name="install-nvidia-drivers-and-cuda-toolkit"></a>
 
-...
+### Installing NVIDIA Drivers and CUDA Toolkit
 
-This completes the comprehensive setup guide for the Real Estate Classification API. Following these instructions will ensure a smooth installation process and proper functioning of the API. If you need further assistance, refer to the linked resources or reach out for support.
+Install NVIDIA drivers and CUDA Toolkit according to server specifications. For example, if your GPU is NVIDIA Tesla T4 and requires CUDA 11.x compatibility:
+
+```bash
+sudo apt install nvidia-driver-version
+
+# Install CUDA Toolkit 11.x
+sudo apt install nvidia-cuda-toolkit
+```
+
+Replace `'nvidia-driver-version'` with the appropriate NVIDIA driver version based on your server specifications.
+
+### Verifying NVIDIA Driver Installation
+
+After installing the NVIDIA driver, verify its installation using `nvidia-smi`:
+
+```bash
+nvidia-smi
+```
+
+You should see information about your NVIDIA GPU, confirming that the driver is installed correctly.
+
+### Verifying CUDA Installation
+
+After installing the NVIDIA driver and CUDA Toolkit, verify CUDA installation:
+
+```bash
+nvcc --version
+```
+
+Ensure that the `nvcc` command outputs the version of CUDA installed on your system.
+
+With these instructions added, users will be guided through checking server specifications, installing the appropriate NVIDIA drivers and CUDA Toolkit, and verifying the installation to ensure compatibility and functionality.
+```
+
