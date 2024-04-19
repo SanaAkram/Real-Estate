@@ -254,32 +254,30 @@ sudo lshw -C display
 ```
 *If not then contact your manager.
 
-### Installing NVIDIA Drivers and CUDA Toolkit
-
-Install CUDA Toolkit & Cudann 7.5.0 according to server specifications. For example, if your GPU is NVIDIA Tesla T4 and requires CUDA 10.0 compatibility:
-
-```bash
+# Install NVIDIA drivers
 sudo apt install nvidia-headless-535-server nvidia-utils-535-server -y
 sudo apt install nvidia-driver-535
 
- sudo wget https://us.download.nvidia.com/tesla/440.95.01/NVIDIA-Linux-x86_64-440.95.01.run
-sudo sh NVIDIA-Linux-x86_64-418.126.02.run
+# Download and install NVIDIA driver
+sudo wget https://us.download.nvidia.com/tesla/440.95.01/NVIDIA-Linux-x86_64-440.95.01.run
+sudo sh NVIDIA-Linux-x86_64-440.95.01.run
 
-# Install CUDA 10.0
-`sudo wget https://developer.nvidia.com/compute/cuda/10.0/Prod/local_installers/cuda-repo-ubuntu1804-10-0-local-10.0.130-410.48_1.0-1_amd64.deb`
-`sudo dpkg -i cuda-repo-ubuntu1804-10-0-local-10.0.130-410.48_1.0-1_amd64.deb`
-`sudo apt-key add /var/cuda-repo-<version>/7fa2af80.pub`
-`sudo apt-get update`
-`sudo apt -y install cuda-10-0`
- `export PATH=/usr/local/cuda-10.0/bin${PATH:+:${PATH}}`
- `export LD_LIBRARY_PATH=/usr/local/cuda-10.0/lib64 ${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}`
+# Install CUDA Toolkit 10.0
+sudo wget https://developer.nvidia.com/compute/cuda/10.0/Prod/local_installers/cuda-repo-ubuntu1804-10-0-local-10.0.130-410.48_1.0-1_amd64.deb
+sudo dpkg -i cuda-repo-ubuntu1804-10-0-local-10.0.130-410.48_1.0-1_amd64.deb
+sudo apt-key add /var/cuda-repo-<version>/7fa2af80.pub
+sudo apt-get update
+sudo apt -y install cuda-10-0
 
-# For Cudann 7.6.4
-sudo wget https://www.dropbox.com/scl/fi/8fmpwmxun8ebsrtlw5an6/libcudnn7_7.5.0.56-1-cuda10.0_amd64.deb?rlkey=7fnj43qq6544eufcq7jijq4lc&st=yuz87m80&dl=0
+# Add CUDA binaries to PATH and library path
+export PATH=/usr/local/cuda-10.0/bin${PATH:+:${PATH}}
+export LD_LIBRARY_PATH=/usr/local/cuda-10.0/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+
+# Install cuDNN 7.5.0
+sudo wget https://www.dropbox.com/scl/fi/8fmpwmxun8ebsrtlw5an6/libcudnn7_7.5.0.56-1-cuda10.0_amd64.deb?rlkey=7fnj43qq6544eufcq7jijq4lc&st=yuz87m80&dl=0 -O libcudnn7_7.5.0.56-1+cuda10.0_amd64.deb
 sudo dpkg -i libcudnn7_7.5.0.56-1+cuda10.0_amd64.deb
-sudo cp /var/cudnn-local-repo-ubuntu2004-9.1.0/cudnn-*-keyring.gpg /usr/share/keyrings/
 sudo apt-get -y install cudnn
-```
+
 
 Replace `'nvidia-driver-version'` with the appropriate NVIDIA driver version based on your server specifications.
 
