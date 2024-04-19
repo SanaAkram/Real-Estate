@@ -243,7 +243,6 @@ unzip models.zip
 cd ../../../..
 ```
 
-```markdown
 ## 8. Install NVIDIA Drivers and CUDA Toolkit <a name="install-nvidia-drivers-and-cuda-toolkit"></a>
 
 ### Installing NVIDIA Drivers and CUDA Toolkit
