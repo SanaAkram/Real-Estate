@@ -24,10 +24,7 @@ Before starting the installation process, ensure you have the following prerequi
 ``` 
 mysql> SET GLOBAL max_connections = 500;
 ```
-### Additional Libraries (Ubuntu)
 
-- Libsvm3
-- Python-libsvm
 ### Installing MySQL
 
 ```bash
