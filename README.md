@@ -2,21 +2,6 @@
 
 Welcome to the Real Estate Classification API Configuration Guide! This comprehensive guide will assist you in setting up the Real Estate Classification API on your Ubuntu server. Ensure to follow each step diligently for a smooth installation process.
 
-## Table of Contents
-
-1. [Prerequisites](#prerequisites)
-   - [Hardware Requirements](#hardware-requirements)
-   - [Software Requirements](#software-requirements)
-2. [Installing MySQL](#installing-mysql)
-   - [Configuring MySQL](#configuring-mysql)
-   - [Verifying MySQL Installation](#verifying-mysql-installation)
-3. [Setting Up and Testing SSH Keys with GitHub](#setting-up-and-testing-ssh-keys-with-github)
-4. [Installing Python 3.6 on Ubuntu](#installing-python-36-on-ubuntu)
-   - [Conclusion](#conclusion)
-5. [Installing Components from Ubuntu Repositories](#installing-components-from-ubuntu-repositories)
-6. [Creating Python Virtual Environments](#creating-python-virtual-environments)
-7. [Downloading Machine Learning Models](#downloading-machine-learning-models)
-8. [Install NVIDIA Drivers and CUDA Toolkit](#install-nvidia-drivers-and-cuda-toolkit)
 
 ## 1. Prerequisites <a name="prerequisites"></a>
 
