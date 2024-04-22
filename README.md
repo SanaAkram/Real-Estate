@@ -41,10 +41,15 @@ Before initiating the installation process, ensure your system meets the followi
 To install MySQL, execute the following command:
 
 ```bash
-sudo apt-get install mysql-server
+if ! command -v mysql &> /dev/null
+then
+    echo "MySQL is not installed."
+    echo "Installing MySQL..."
+    sudo apt-get install mysql-server
+else
+    echo "MySQL is already installed."
+fi
 ```
-
-Follow the on-screen prompts to set a root password for MySQL.
 
 ### Configuring MySQL <a name="configuring-mysql"></a>
 
@@ -61,7 +66,12 @@ Find `max_connections` and set it to `500`.
 Check if MySQL server is running:
 
 ```bash
-systemctl status mysql
+if systemctl status mysql | grep -q "active (running)"; then
+    echo "MySQL is running."
+    systemctl status mysql
+else
+    echo "MySQL is not running."
+fi
 ```
 
 Continue formatting and adding content for the remaining sections as needed. This structure provides a clear and organized guide for users to follow.
@@ -84,7 +94,7 @@ This section outlines the process for generating a new SSH key, adding it to a G
    Begin by generating a new SSH key pair using the `ssh-keygen` command. The key will be secured with a passphrase for additional security.
 
    ```bash
-   ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+   ssh-keygen -t rsa -b 4096 -C "afakkaz@yahoo.com"
    ```
 
    When prompted, enter the filename to save the key, or press Enter to use the default location (`~/.ssh/id_rsa`).
@@ -128,7 +138,7 @@ This section outlines the process for generating a new SSH key, adding it to a G
    ```plaintext
    Hi {username}! You've successfully authenticated, but GitHub does not provide shell access.
    ```
-
+`	 
 
 ## 4. Installing Python 3.6 on Ubuntu <a name="installing-python-36-on-ubuntu"></a>
 
